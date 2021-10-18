@@ -25,7 +25,7 @@ def regV(): # Esta sección fue hecha por Valería
 
 def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
     """Crea la lista nueva con
-        nuestras ventas"""
+        nuestras ventas actualizadas"""
     index = 0
     for register in venta:
         if name in register:
@@ -115,3 +115,4 @@ def menu(): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
         
     
     regV("ventas", creadorRegV())
+    
