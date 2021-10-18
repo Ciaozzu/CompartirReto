@@ -23,34 +23,35 @@ def regV(): # Esta sección fue hecha por Valería
         
     return finalData
 
-def updateEmpleadosLista(name,role): # Esta sección fue hecha por Valeria
+def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
     """Crea la lista nueva con
         nuestras ventas"""
     index = 0
-    for register in role:
+    for register in venta:
         if name in register:
-            role[index] [1] += 1
+            venta[index] [1] += 1
         index += 1
-    return role
-data = regV()
+    return venta
+data = regV() #Este valor se debe de asignar en "venta"  en la funcion de arribita
 
-def creaLE(role): #Esta sección fue hecha por Ángel
+def creaLE(venta): #Esta sección fue hecha por Ángel
     """Crea la lista necesaria
         para pasarla a csv"""
     listaNB = []
-    for elemento in role:
+    for elemento in venta:
         listaN = elemento[0] + ","
         listaN += str(elemento[1]) + "\n"
         print(listaN)
         listaNB.append(listaN)
     return listaNB
 
+def
+
 def geneA(nombreA,listaNB): #Esta sección fue hecha por Ángel
     """Genera el archivo
-        EmpleadosLista.txt
-    y EmpleadosLista.csv"""
+        EmpleadosLista.txt"""
     with open(nombreA + ".txt", "w") as archivo:
-        archivo.write(listaNB)  
+        archivo.write(listaNB) 
 # Resgistrar inventario
 # Resgistrar inventario
 # Resgistrar inventario
