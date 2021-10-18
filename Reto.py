@@ -8,9 +8,36 @@ def regV(nombreArch, crv): #Registra nuestras ventas
 def creadorRegV(): #Hace el string necesario regV
     registro = "hola"
     return registro
+
     #regV()
 regV("ventas", creadorRegV())    
 #def regVE(): #Agrega la venta realizada del empleado al registro
+def regV(): #
+    with open("EmpleadosLista.txt","r") as myFile:
+        dataString = myFile.readlines()
+        
+    dataNoBS = [] #
+    for person in dataString:
+        noBS = person.rstrip()
+        dataNoBS.append(noBS.split(","))
+        
+    finalData = [] #
+    for person in dataNoBS:
+        name = person[0]
+        num = int(person[1])
+        finalData.append([name,num])
+        
+    return finalData
+
+def updateEmpleadosLista(name,role): #
+    index = 0
+    for register in role:
+        if name in register:
+            role[index] [1] += 1
+        index += 1
+
+    return role
+data = regV()
 
 #def regLA(): #Registra la llegada de artículos
     
