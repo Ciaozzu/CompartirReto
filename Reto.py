@@ -37,13 +37,13 @@ data = regV() #Este valor se debe de asignar en "venta"  en la funcion de arribi
 def creaLE(venta): #Esta sección fue hecha por Ángel
     """Crea la lista necesaria
         para pasarla a csv"""
-    listaNB = []
+    listaPGA = [] # Esto genera la lista necesaria para pasarlo al archivo
     for elemento in venta:
         listaN = elemento[0] + ","
         listaN += str(elemento[1]) + "\n"
         print(listaN)
         listaNB.append(listaN)
-    return listaNB
+    return listaPGA  
 
 def
 
