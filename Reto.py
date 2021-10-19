@@ -53,6 +53,7 @@ def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
 
 data = regV()
 listaUCE = mostrEmpl2(data)
+
 def creaLE(venta): #Esta sección fue hecha por Ángel
     """Crea la lista necesaria
         para pasarla a texto"""
@@ -79,6 +80,9 @@ def regVE(empleado): # Esta sección fue hecha por Ángel
         producto = int(input("Introduce el numero del producto vendido: "))
         cantiProd = int(input("Ingresa la cantidad que fue vendida de este mismo producto: "))
         geneLRB(fecha, empleado, producto, cantiProd)
+        listaIM = crearLBI()
+        actualizarLBI(producto,listaIM,cantiProd)
+        crearLIA(actualizarLBI(producto,listaIM,cantiProd))
         
         resp = int(input("Se vendieron más artículos 1. Sí 2. No: "))
         
@@ -121,7 +125,7 @@ def consultI(listaI): # Esta sección fue hecha por Ángel
 def creaLprod(ListaProd):
     """Crea una lista de los productos
         existentes en el inventario"""
-    cont = 1
+    cont = 0
     for elem in ListaProd:
         print(f"{cont}. " + elem[0])
         cont += 1
@@ -137,14 +141,22 @@ def creaLI(nombreAr): # Esta sección fue hecha por Ángel
         listaB.append(eleme.split(","))
     return listaB
 
-def crearLIA(listLBI): # Esta sección fue hecha por Ángel
-    """Pasa la lista bonita del
-        inventario actualizado a una fea """
-    with open("Inventario.txt","a") as ListaAFI:
+def crearLIA(listPAI): # Esta sección fue hecha por Ángel
+    """crea la lista fea actualizada
+        del inventario """
+    listaIA = [] #Lista fea del inventario actualizado
+    for elemento in listPAI: #listaPAI = lista bonita para actualizar el inventario
+        listaNue = elemento[0] + ","
+        listaNue += elemento[1] + ","
+        listaNue += elemento[2] + ","
+        listaNue += elemento[3] + "\n"
+        listaIA.append(listaNue)
+    return listaIA
+    
 
 def crearLBI(): # Esta sección fue hecha por Ángel
     """Crea la lista bonita
-        con datos manipulables """
+        con datos manipulables del inventario """
     with open("Inventario.txt","r") as myFile:
         dataString = myFile.readlines()
     
@@ -153,24 +165,26 @@ def crearLBI(): # Esta sección fue hecha por Ángel
         noBS = elem.rstrip()
         dataNoBS.append(noBS.split(","))
         
-    listaFinal = [] 
+    listaFinall = [] 
     for elementos in dataNoBS:
         productt = elementos[0]
         precio = elementos[1]
         cantidad = int(elementos[2])
         categoria = elementos[3]
-        listaFinal.append([productt,precio,cantidad,categoria])
-    return listaFinal
+        listaFinall.append([productt,precio,cantidad,categoria])
+    return listaFinall
 
-dataInv = crearLBI() #Guardamos la lista bonita de inventario
 
 def actualizarLBI(produ,datInv,cant): # Esta sección fue hecha por Valeria
     """Crea la lista nueva con
-        #nuestras ventas actualizadas"""
-        index = 0 
-        venta[index] [3] -= 1
-        index += 1
-    return venta
+        #nuestras ventas actualizadas""" 
+    datInv[produ][2] -= cant
+    return datInv
+
+def geneARegV(listaIA): #Esta sección fue hecha por Ángel
+    with open("Inventario.txt", "w") as InventarioAc:
+        inventarioAc.writelines(listaIA)
+        
 ######################################################################
 #####################"""444444444444444444444"""######################
 ######################################################################
@@ -200,7 +214,8 @@ def actualizarLBI(produ,datInv,cant): # Esta sección fue hecha por Valeria
 ######################################################################
 ###################"""77777777777777777777777777###################
 ######################################################################
-def menu(nomError): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
+        
+def menu(nomError): #Esta sección fue hecha por Ángel Márquez
     print("\nMenu:\n1. Registrar ventas\n2. Registrar llegada de artículos al almacen\n3. Consultar datos del inventario\n4. Consultar datos de las ventas\n5. Mostrar reportes de ventas por vendedor o por artículo\n")
     ans = int(input("Elige la opción que deseas seleccionar: "))
     if ans == 1:
@@ -217,7 +232,6 @@ def menu(nomError): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
             menu(listaUCE)
         elif respu == 2:
             print("\n¡Hasta la proxima!")
-          
         
     #elif ans == 2:
         
