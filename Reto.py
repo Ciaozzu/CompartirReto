@@ -212,7 +212,7 @@ def menu(nomError): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
         print("\nEl registro fue hecho con exito")
         respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el numero deseado: "))
         if respu == 1:
-            menu()
+            menu(listaUCE)
         elif respu == 2:
             print("\n¡Hasta la proxima!")
           
