@@ -32,19 +32,14 @@ def mostrEmpl(finalData):
         print("- " + nombre)
         
 def mostrEmpl2(finalData):
-    """Esta función muestra los
-        empleados que hay"""
-    print("A continuación se muestran todos los empleados: ")
-    listaNM = []
-    
+    """Crea una lista unicamente
+        con los empleados"""
+    listaUE = []
     for elemento in finalData:
-        
-        nombre = "," elemento[0]
-        listaNM.append(nombre)
-            
-    
-        
-    return listaMN
+        nombre = elemento[0]
+        listaUE.append(nombre)   
+    return listaUE
+
 
 def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
     """Crea la lista nueva con
@@ -57,7 +52,7 @@ def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
     return venta
 
 data = regV()
-
+listaUCE = mostrEmpl2(data)
 def creaLE(venta): #Esta sección fue hecha por Ángel
     """Crea la lista necesaria
         para pasarla a texto"""
@@ -210,20 +205,17 @@ def menu(nomError): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
         print("\nA continuación se le mostrara una lista de las personas empleadas:\n")
         mostrEmpl(data)
         nombr = input("\nEscriba el nombre de la persona que se le registrara una venta\n(Es importante que lo escriba tal cual esta escrito en la lista)\n: ")
-        for elem in nomError
-            if nombr in elem
-                geneA("EmpleadosVentas",creaLE(updateEmpleadosLista(nombr,data)))
-                regVE(nombr)
-                print("\nEl registro fue hecho con exito")
-                respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el numero deseado: "))
-                if respu == 1:
-                    menu()
-                elif respu == 2:
-                    print("\n¡Hasta la proxima!")
-                break
-        break
-        else:
-            
+        while nombr not in nomError:
+            nombr = input("\nEscriba el nombre de la persona que se le registrara una venta\n(Es importante que lo escriba tal cual esta escrito en la lista)\n: ")
+        geneA("EmpleadosVentas",creaLE(updateEmpleadosLista(nombr,data)))
+        regVE(nombr)
+        print("\nEl registro fue hecho con exito")
+        respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el numero deseado: "))
+        if respu == 1:
+            menu()
+        elif respu == 2:
+            print("\n¡Hasta la proxima!")
+          
         
     #elif ans == 2:
         
@@ -237,3 +229,5 @@ def menu(nomError): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
 ######################################################################      
 ######################################################################
 ######################################################################
+          
+
