@@ -5,7 +5,7 @@ print(os.getcwd())
 ######################################################################
 def regV(): # Esta sección fue hecha por Valería
     """ Crea la lista manipulable, necesaria
-        para updateEmpleadosLista """
+        para update EmpleadosVenta.txt """
     with open("EmpleadosVentas.txt","r") as myFile:
         dataString = myFile.readlines()
         
@@ -30,7 +30,21 @@ def mostrEmpl(finalData):
     for elemento in finalData:
         nombre = elemento[0]
         print("- " + nombre)
+        
+def mostrEmpl2(finalData):
+    """Esta función muestra los
+        empleados que hay"""
+    print("A continuación se muestran todos los empleados: ")
+    listaNM = []
     
+    for elemento in finalData:
+        
+        nombre = "," elemento[0]
+        listaNM.append(nombre)
+            
+    
+        
+    return listaMN
 
 def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
     """Crea la lista nueva con
@@ -52,7 +66,7 @@ def creaLE(venta): #Esta sección fue hecha por Ángel
         listaN = elemento[0] + ","
         listaN += str(elemento[1]) + "\n"
         listaPGA.append(listaN)
-    print(listaPGA) 
+    return listaPGA
 
 def geneA(nombreA,listaPGA): #Esta sección fue hecha por Ángel
     """Genera el archivo
@@ -60,20 +74,35 @@ def geneA(nombreA,listaPGA): #Esta sección fue hecha por Ángel
     with open(nombreA + ".txt", "w") as archivo:
         archivo.writelines(listaPGA)
     
-def regVE(): # Esta sección fue hecha por Ángel
+def regVE(empleado): # Esta sección fue hecha por Ángel
     """registro de ventas"""
-    fecha = input("Fecha en la que se esta realizando el registro de la compra(dd/mm/aa):")
-    empleado = input("Empleado que hizo la venta del producto")
-    print("A continuación se muestra la lista de productos en el  inventario:")
+    print("A continuación se muestra la lista de productos en el  inventario:\n")
     creaLprod(creaLI("Inventario"))
     resp = 1
-    while resp == 1
+    while resp == 1:
+        fecha = input("\nFecha en la que se esta realizando el registro de la compra(dd/mm/aa): ")
         producto = int(input("Introduce el numero del producto vendido: "))
         cantiProd = int(input("Ingresa la cantidad que fue vendida de este mismo producto: "))
-        crearLIN(producto,cantiProd)
+        geneLRB(fecha, empleado, producto, cantiProd)
         resp = int(input("Se vendieron más artículos 1. Sí 2. No: "))
-
-
+        
+def geneLRB(fech, emplead, product, cantPro):
+    """Genera el archivo llamado
+        registroVentas"""
+    listaF = []
+    linea1 = "\nRegistro de venta:\n"
+    linea2 = f"Fecha de ventas: {fech}\n"
+    linea3 = f"Empleado: {emplead}\n"
+    linea4 = f"Producto vendido(s): {product}\n"
+    linea5 = f"Costo: {cantPro}\n"
+    listaF.append(linea1)
+    listaF.append(linea2)
+    listaF.append(linea3)
+    listaF.append(linea4)
+    listaF.append(linea5)
+    with open("registroVentas.txt", "a") as regVen:
+        regVen.writelines(listaF)
+    
  
 ######################################################################
 #######################"""2222222222222222"""#########################
@@ -96,8 +125,10 @@ def consultI(listaI): # Esta sección fue hecha por Ángel
 def creaLprod(ListaProd):
     """Crea una lista de los productos
         existentes en el inventario"""
+    cont = 1
     for elem in ListaProd:
-        print("- " + elem[0])
+        print(f"{cont}. " + elem[0])
+        cont += 1
         
 def creaLI(nombreAr): # Esta sección fue hecha por Ángel
     """crea la lista de puros strings del
@@ -110,13 +141,13 @@ def creaLI(nombreAr): # Esta sección fue hecha por Ángel
         listaB.append(eleme.split(","))
     return listaB
 
-def crearLIN(product,cantidad): # Esta sección fue hecha por Ángel
-    """Genera el nuevo archivo Inventario """
-    with open("Inventario.txt","a") as:
+#def crearLIN(product,cantidad): # Esta sección fue hecha por Ángel
+    #"""Genera el nuevo archivo Inventario """
+    #with open("Inventario.txt","a") as:
 
 def crearLBI(): # Esta sección fue hecha por Ángel
     """Crea la lista bonita con datos manipulables """
-    with open("Inventario.txt","r") as:
+    with open("Inventario.txt","r") as myFile:
         dataString = myFile.readlines()
     
     dataNoBS = [] 
@@ -133,15 +164,16 @@ def crearLBI(): # Esta sección fue hecha por Ángel
         listaFinal.append([productt,precio,cantidad,categoria])
     return listaFinal
 
-def actualizarLBI(name,venta): # Esta sección fue hecha por Valeria
-    """Crea la lista nueva con
-        nuestras ventas actualizadas"""
-    index = 0
-    for register in venta:
-        if name in register:
-            venta[index] [3] += 1
-        index += 1
-    return venta
+dataInv = crearLBI() #Guardamos la lista bonita de inventario
+#def actualizarLBI(produ,venta): # Esta sección fue hecha por Valeria
+    #"""Crea la lista nueva con
+        #nuestras ventas actualizadas"""
+    #index = 0
+    #for register in venta:
+        #if name in register:
+            #venta[index] [3] += 1
+        #index += 1
+    #return venta
 ######################################################################
 #####################"""444444444444444444444"""######################
 ######################################################################
@@ -171,20 +203,28 @@ def actualizarLBI(name,venta): # Esta sección fue hecha por Valeria
 ######################################################################
 ###################"""77777777777777777777777777###################
 ######################################################################
-def menu(): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
+def menu(nomError): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
     print("\nMenu:\n1. Registrar ventas\n2. Registrar llegada de artículos al almacen\n3. Consultar datos del inventario\n4. Consultar datos de las ventas\n5. Mostrar reportes de ventas por vendedor o por artículo\n")
     ans = int(input("Elige la opción que deseas seleccionar: "))
     if ans == 1:
         print("\nA continuación se le mostrara una lista de las personas empleadas:\n")
         mostrEmpl(data)
         nombr = input("\nEscriba el nombre de la persona que se le registrara una venta\n(Es importante que lo escriba tal cual esta escrito en la lista)\n: ")
-        geneA("EmpleadosVentas",creaLE(updateEmpleadosLista(nombr,data)))
-        print("\nEl registro fue hecho con exito")
-        respu = int(input("\n¿Desea 1. Permanecer en el programa o 2. Salir ?\nSeleccione el numero deseado: "))
-        if respu == 1:
-            menu()
-        elif respu == 2:
-            print("\n¡Hasta la proxima!")
+        for elem in nomError
+            if nombr in elem
+                geneA("EmpleadosVentas",creaLE(updateEmpleadosLista(nombr,data)))
+                regVE(nombr)
+                print("\nEl registro fue hecho con exito")
+                respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el numero deseado: "))
+                if respu == 1:
+                    menu()
+                elif respu == 2:
+                    print("\n¡Hasta la proxima!")
+                break
+        break
+        else:
+            
+        
     #elif ans == 2:
         
     #elif ans == 3
@@ -197,4 +237,3 @@ def menu(): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
 ######################################################################      
 ######################################################################
 ######################################################################
-    
