@@ -1,7 +1,7 @@
 import os
 print(os.getcwd())
 ######################################################################
-######################################################################
+#######################"""111111111111111"""##########################
 ######################################################################
 def regV(): # Esta sección fue hecha por Valería
     """ Crea la lista manipulable, necesaria
@@ -52,7 +52,7 @@ def creaLE(venta): #Esta sección fue hecha por Ángel
         listaN = elemento[0] + ","
         listaN += str(elemento[1]) + "\n"
         listaPGA.append(listaN)
-    return (listaPGA) 
+    print(listaPGA) 
 
 def geneA(nombreA,listaPGA): #Esta sección fue hecha por Ángel
     """Genera el archivo
@@ -60,26 +60,30 @@ def geneA(nombreA,listaPGA): #Esta sección fue hecha por Ángel
     with open(nombreA + ".txt", "w") as archivo:
         archivo.writelines(listaPGA)
     
-        
-def regVE(): 
-    """Agrega la venta realizada del
-        empleado al registro"""
-    fecha = input("fecha en la que se esta realizando el registro de la compra(dd/mm/aa):")
-     
+def regVE(): # Esta sección fue hecha por Ángel
+    """registro de ventas"""
+    fecha = input("Fecha en la que se esta realizando el registro de la compra(dd/mm/aa):")
+    empleado = input("Empleado que hizo la venta del producto")
+    print("A continuación se muestra la lista de productos en el  inventario:")
+    creaLprod(creaLI("Inventario"))
+    resp = 1
+    while resp == 1
+        producto = int(input("Introduce el numero del producto vendido: "))
+        cantiProd = int(input("Ingresa la cantidad que fue vendida de este mismo producto: "))
+        crearLIN(producto,cantiProd)
+        resp = int(input("Se vendieron más artículos 1. Sí 2. No: "))
+
+
+ 
 ######################################################################
-######################################################################
+#######################"""2222222222222222"""#########################
 ######################################################################
 
 #def regLA(): #Registra la llegada de artículos al almacen
     
-######################################################################
-######################################################################
-######################################################################
-    
-#def agreI(): #Agrega el artículo registrado al inventario
     
 ######################################################################
-######################################################################
+######################"""333333333333333333"""########################
 ######################################################################
 def consultI(listaI): # Esta sección fue hecha por Ángel
     """Consulta los datos del
@@ -88,6 +92,12 @@ def consultI(listaI): # Esta sección fue hecha por Ángel
         print("\n")
         for elemento in fila:
             print(elemento + "\t",end = "")
+
+def creaLprod(ListaProd):
+    """Crea una lista de los productos
+        existentes en el inventario"""
+    for elem in ListaProd:
+        print("- " + elem[0])
         
 def creaLI(nombreAr): # Esta sección fue hecha por Ángel
     """crea la lista de puros strings del
@@ -98,15 +108,48 @@ def creaLI(nombreAr): # Esta sección fue hecha por Ángel
     for ele in info:
         eleme = ele.rstrip()
         listaB.append(eleme.split(","))
-    return listaB  
+    return listaB
+
+def crearLIN(product,cantidad): # Esta sección fue hecha por Ángel
+    """Genera el nuevo archivo Inventario """
+    with open("Inventario.txt","a") as:
+
+def crearLBI(): # Esta sección fue hecha por Ángel
+    """Crea la lista bonita con datos manipulables """
+    with open("Inventario.txt","r") as:
+        dataString = myFile.readlines()
+    
+    dataNoBS = [] 
+    for elem in dataString:
+        noBS = elem.rstrip()
+        dataNoBS.append(noBS.split(","))
+        
+    listaFinal = [] 
+    for elementos in dataNoBS:
+        productt = elementos[0]
+        precio = elementos[1]
+        cantidad = int(elementos[2])
+        categoria = elementos[3]
+        listaFinal.append([productt,precio,cantidad,categoria])
+    return listaFinal
+
+def actualizarLBI(name,venta): # Esta sección fue hecha por Valeria
+    """Crea la lista nueva con
+        nuestras ventas actualizadas"""
+    index = 0
+    for register in venta:
+        if name in register:
+            venta[index] [3] += 1
+        index += 1
+    return venta
 ######################################################################
-######################################################################
+#####################"""444444444444444444444"""######################
 ######################################################################
 
 #def consultV #Consulta los datos de las ventas
 
 ######################################################################
-######################################################################
+####################"""555555555555555555555"""#######################
 ######################################################################
 
 #def reporteVA():
@@ -117,14 +160,16 @@ def creaLI(nombreAr): # Esta sección fue hecha por Ángel
     #elif resp == 2
         #Articulo
 
+
+
 ######################################################################
-######################################################################
+####################"""66666666666666666666666"""#####################
 ######################################################################
 
 #def prodPA(): #Te despliega los productos que estan por agotarse
 
 ######################################################################
-######################################################################
+###################"""77777777777777777777777777###################
 ######################################################################
 def menu(): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
     print("\nMenu:\n1. Registrar ventas\n2. Registrar llegada de artículos al almacen\n3. Consultar datos del inventario\n4. Consultar datos de las ventas\n5. Mostrar reportes de ventas por vendedor o por artículo\n")
