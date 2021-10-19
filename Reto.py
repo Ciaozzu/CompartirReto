@@ -52,7 +52,7 @@ def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
     return venta
 
 data = regV()
-listaUCE = mostrEmpl2(data)
+listaUCE = mostrEmpl2(data) #variable que utilizamos en menu para hacer el ciclo while del n° 1 posible
 
 def creaLE(venta): #Esta sección fue hecha por Ángel
     """Crea la lista necesaria
@@ -81,8 +81,7 @@ def regVE(empleado): # Esta sección fue hecha por Ángel
         cantiProd = int(input("Ingresa la cantidad que fue vendida de este mismo producto: "))
         geneLRB(fecha, empleado, producto, cantiProd)
         listaIM = crearLBI()
-        actualizarLBI(producto,listaIM,cantiProd)
-        crearLIA(actualizarLBI(producto,listaIM,cantiProd))
+        geneAI(crearLIA(actualizarLBI(producto,listaIM,cantiProd)))
         
         resp = int(input("Se vendieron más artículos 1. Sí 2. No: "))
         
@@ -148,7 +147,7 @@ def crearLIA(listPAI): # Esta sección fue hecha por Ángel
     for elemento in listPAI: #listaPAI = lista bonita para actualizar el inventario
         listaNue = elemento[0] + ","
         listaNue += elemento[1] + ","
-        listaNue += elemento[2] + ","
+        listaNue += str(elemento[2]) + ","
         listaNue += elemento[3] + "\n"
         listaIA.append(listaNue)
     return listaIA
@@ -181,27 +180,28 @@ def actualizarLBI(produ,datInv,cant): # Esta sección fue hecha por Valeria
     datInv[produ][2] -= cant
     return datInv
 
-def geneARegV(listaIA): #Esta sección fue hecha por Ángel
+def geneAI(listaIA): #Esta sección fue hecha por Ángel
     with open("Inventario.txt", "w") as InventarioAc:
-        inventarioAc.writelines(listaIA)
+        InventarioAc.writelines(listaIA)
         
 ######################################################################
 #####################"""444444444444444444444"""######################
 ######################################################################
 
-#def consultV #Consulta los datos de las ventas
-
+def consultV #Consulta los datos de las ventas
+    with open("registroVentas.txt", "r") as regVentas
+         = regVentas.readlines()
 ######################################################################
 ####################"""555555555555555555555"""#######################
 ######################################################################
 
-#def reporteVA():
-    #print("Mostrar reporte de ventas por:  1. Por vendedor 2. Por articulo")
-    #resp = input("respuesta: ")
-    #if resp == 1
-        #juan Karla Sam Margaret Jose Henry
-    #elif resp == 2
-        #Articulo
+def reporteVA():
+    print("Mostrar reporte de ventas por:  1. Por vendedor 2. Por articulo")
+    resp = input("respuesta: ")
+    if resp == 1
+        
+    elif resp == 2
+        Articulo
 
 
 
@@ -216,7 +216,7 @@ def geneARegV(listaIA): #Esta sección fue hecha por Ángel
 ######################################################################
         
 def menu(nomError): #Esta sección fue hecha por Ángel Márquez
-    print("\nMenu:\n1. Registrar ventas\n2. Registrar llegada de artículos al almacen\n3. Consultar datos del inventario\n4. Consultar datos de las ventas\n5. Mostrar reportes de ventas por vendedor o por artículo\n")
+    print("\nMenu:\n1. Registrar ventas\n2. Registrar llegada de artículos al almacen\n3. Consultar datos del inventario\n4. Consultar datos de las ventas\n5. Mostrar reportes de ventas por vendedor o por artículo\n6.\n7. Salir\n")
     ans = int(input("Elige la opción que deseas seleccionar: "))
     if ans == 1:
         print("\nA continuación se le mostrara una lista de las personas empleadas:\n")
@@ -232,6 +232,7 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
             menu(listaUCE)
         elif respu == 2:
             print("\n¡Hasta la proxima!")
+          
         
     #elif ans == 2:
         
@@ -243,6 +244,8 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
     #elif ans == 5
         
     #elif ans == 6
+        
+    #elif
 ######################################################################      
 ######################################################################
 ######################################################################
