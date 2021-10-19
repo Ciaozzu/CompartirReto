@@ -79,6 +79,7 @@ def regVE(empleado): # Esta sección fue hecha por Ángel
         producto = int(input("Introduce el numero del producto vendido: "))
         cantiProd = int(input("Ingresa la cantidad que fue vendida de este mismo producto: "))
         geneLRB(fecha, empleado, producto, cantiProd)
+        
         resp = int(input("Se vendieron más artículos 1. Sí 2. No: "))
         
 def geneLRB(fech, emplead, product, cantPro):
@@ -103,7 +104,7 @@ def geneLRB(fech, emplead, product, cantPro):
 #######################"""2222222222222222"""#########################
 ######################################################################
 
-#def regLA(): #Registra la llegada de artículos al almacen
+
     
     
 ######################################################################
@@ -136,12 +137,14 @@ def creaLI(nombreAr): # Esta sección fue hecha por Ángel
         listaB.append(eleme.split(","))
     return listaB
 
-#def crearLIN(product,cantidad): # Esta sección fue hecha por Ángel
-    #"""Genera el nuevo archivo Inventario """
-    #with open("Inventario.txt","a") as:
+def crearLIA(listLBI): # Esta sección fue hecha por Ángel
+    """Pasa la lista bonita del
+        inventario actualizado a una fea """
+    with open("Inventario.txt","a") as ListaAFI:
 
 def crearLBI(): # Esta sección fue hecha por Ángel
-    """Crea la lista bonita con datos manipulables """
+    """Crea la lista bonita
+        con datos manipulables """
     with open("Inventario.txt","r") as myFile:
         dataString = myFile.readlines()
     
@@ -160,15 +163,14 @@ def crearLBI(): # Esta sección fue hecha por Ángel
     return listaFinal
 
 dataInv = crearLBI() #Guardamos la lista bonita de inventario
-#def actualizarLBI(produ,venta): # Esta sección fue hecha por Valeria
-    #"""Crea la lista nueva con
+
+def actualizarLBI(produ,datInv,cant): # Esta sección fue hecha por Valeria
+    """Crea la lista nueva con
         #nuestras ventas actualizadas"""
-    #index = 0
-    #for register in venta:
-        #if name in register:
-            #venta[index] [3] += 1
-        #index += 1
-    #return venta
+        index = 0 
+        venta[index] [3] -= 1
+        index += 1
+    return venta
 ######################################################################
 #####################"""444444444444444444444"""######################
 ######################################################################
@@ -219,8 +221,9 @@ def menu(nomError): #Crea el Menu #Esta sección fue hecha por Ángel Márquez
         
     #elif ans == 2:
         
-    #elif ans == 3
-        #consultI(creaLI("Inventario.csv"))
+    elif ans == 3:
+        print("Consultar datos del inventario")
+        consultI(creaLI("Inventario"))
     #elif ans == 4
         
     #elif ans == 5
