@@ -107,7 +107,37 @@ def geneLRB(fech, emplead, product, cantPro):
 #######################"""2222222222222222"""#########################
 ######################################################################
 
-
+def regLA(): # Esta sección fue hecha por Ángel
+    """registro de llegada de articulos al almacen"""
+    print("A continuación se muestra la lista de productos en el inventario: ")
+    creaLprod(creaLI("Inventario"))
+    resp = 1
+    while resp == 1:
+        fecha = input("Fecha de llegada del articulo(dd/mm/aa): ")
+        producto = int(input("Introduce el numero del producto reabastecido: "))
+        cantiProd = int(input("Ingresa la cantidad que fue reabastecida: "))        
+        geneRegLleg(fecha, producto, cantiProd)
+        listaaIM = crearLBI()
+        geneALlegA(crearLIA(actualizarLInv(producto, listaaIM, cantiProd)))
+        resp = int(input("Llegaron más artículos 1. Sí 2. No: "))
+        if resp == "2":
+            menu(listaUCE)
+        
+def geneRegLleg(fech, product, cantProd):
+    """Genera el archivo registroLA"""
+    listaF = []
+    linea1 = "Registro de llegada de articulo:\n"
+    linea2 = f"Fecha de recepecion: {fech}\n"
+    linea3 = f"Nombre del articulo: {product}\n"
+    linea4 = f"Cantidad: {cantProd}\n"
+    
+    listaF.append(linea1)
+    listaF.append(linea2)
+    listaF.append(linea3)
+    listaF.append(linea4)
+    with open("registroLA.txt","a") as regProdAlmacen:
+        regProdAlmacen.writelines(listaF)
+     
     
     
 ######################################################################
@@ -180,28 +210,37 @@ def actualizarLBI(produ,datInv,cant): # Esta sección fue hecha por Valeria
     datInv[produ][2] -= cant
     return datInv
 
+def actualizarLInv(produ,datInv,cant): # Esta sección fue hecha por Valeria
+    """Crea lista BONITA nueva con nuestro inventario actualizado""" 
+    datInv[produ][2] += cant
+    return datInv
+
 def geneAI(listaIA): #Esta sección fue hecha por Ángel
     with open("Inventario.txt", "w") as InventarioAc:
+        InventarioAc.writelines(listaIA)
+        
+def geneALlegA(listaIA): #Esta sección fue hecha por Ángel
+    with open("RegistroLa.txt", "w") as InventarioAc:
         InventarioAc.writelines(listaIA)
         
 ######################################################################
 #####################"""444444444444444444444"""######################
 ######################################################################
 
-def consultV #Consulta los datos de las ventas
-    with open("registroVentas.txt", "r") as regVentas
-         = regVentas.readlines()
+#def consultV #Consulta los datos de las ventas
+ #   with open("registroVentas.txt", "r") as regVentas
+  #       = regVentas.readlines()
 ######################################################################
 ####################"""555555555555555555555"""#######################
 ######################################################################
 
-def reporteVA():
-    print("Mostrar reporte de ventas por:  1. Por vendedor 2. Por articulo")
-    resp = input("respuesta: ")
-    if resp == 1
+#def reporteVA():
+ #   print("Mostrar reporte de ventas por:  1. Por vendedor 2. Por articulo")
+  #  resp = input("respuesta: ")
+   # if resp == 1
         
-    elif resp == 2
-        Articulo
+    #elif resp == 2
+     #   Articulo
 
 
 
@@ -234,8 +273,18 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
             print("\n¡Hasta la proxima!")
           
         
-    #elif ans == 2:
-        
+    elif ans == 2:
+        print("Llegada de artículos al almacen: ")
+        regLA()
+        print("\nEl registro fue hecho con exito")
+        respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el numero deseado: "))
+        if respu == 1:
+            menu(listaUCE)
+        elif respu == 2:
+            print("\n¡Hasta la proxima!")
+            
+            
+            
     elif ans == 3:
         print("Consultar datos del inventario")
         consultI(creaLI("Inventario"))
@@ -250,4 +299,3 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
 ######################################################################
 ######################################################################
           
-
