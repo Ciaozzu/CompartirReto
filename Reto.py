@@ -144,8 +144,7 @@ def geneRegLleg(fech, product, cantProd):
 ######################"""333333333333333333"""########################
 ######################################################################
 def consultI(listaI): # Esta sección fue hecha por Ángel
-    """Consulta los datos del
-        inventario"""
+    """Despliega en pantalla el inventario"""
     for fila in listaI:
         print("\n")
         for elemento in fila:
@@ -220,16 +219,31 @@ def geneAI(listaIA): #Esta sección fue hecha por Ángel
         InventarioAc.writelines(listaIA)
         
 def geneALlegA(listaIA): #Esta sección fue hecha por Ángel
-    with open("RegistroLa.txt", "w") as InventarioAc:
+    with open("Inventario.txt", "w") as InventarioAc:
         InventarioAc.writelines(listaIA)
         
 ######################################################################
 #####################"""444444444444444444444"""######################
 ######################################################################
 
-#def consultV #Consulta los datos de las ventas
- #   with open("registroVentas.txt", "r") as regVentas
-  #       = regVentas.readlines()
+def consultVen(dataNoBs):
+    """Despliega el registro de ventas"""
+    for fila in dataNoBs:
+        for elemento in fila:
+            print(elemento + "\t")
+            
+def consultAVen(): #Consulta los datos de las ventas
+    """Crea una lista MEDIO BONITA del archivo registroVentas""" 
+    with open("registroVentas.txt", "r") as regVentas:
+        dataString = regVentas.readlines()
+    
+    dataNoBS = [] 
+    for person in dataString:
+        noBS = person.rstrip()
+        dataNoBS.append(noBS.split(","))
+        
+    return dataNoBS
+
 ######################################################################
 ####################"""555555555555555555555"""#######################
 ######################################################################
@@ -266,13 +280,12 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
         geneA("EmpleadosVentas",creaLE(updateEmpleadosLista(nombr,data)))
         regVE(nombr)
         print("\nEl registro fue hecho con exito")
-        respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el numero deseado: "))
+        respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el número deseado: "))
         if respu == 1:
             menu(listaUCE)
         elif respu == 2:
             print("\n¡Hasta la proxima!")
           
-        
     elif ans == 2:
         print("Llegada de artículos al almacen: ")
         regLA()
@@ -282,19 +295,26 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
             menu(listaUCE)
         elif respu == 2:
             print("\n¡Hasta la proxima!")
-            
-            
-            
+              
     elif ans == 3:
-        print("Consultar datos del inventario")
+        print("Datos del inventario")
         consultI(creaLI("Inventario"))
-    #elif ans == 4
         
-    #elif ans == 5
+    elif ans == 4:
+        print("Registro de ventas\n\n**Si no ve nada a continuacion significa que no hay registro alguno de ventas**\nSi desea hacer el registro de una venta en el n° 1 del menu puede hacerlo")
+        consultVen(consultAVen())
+    #elif ans == 5:
+        
         
     #elif ans == 6
         
-    #elif
+    elif ans == 7:
+        resp = input("¿Esta seguro que desea salir del programa\n1. Si 2. No?")
+        if resp == 1:
+            print("\n¡Hasta la proxima!")
+        if respu == 2:
+            menu(listaUCE)    
+        
 ######################################################################      
 ######################################################################
 ######################################################################
