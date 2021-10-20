@@ -125,37 +125,7 @@ def geneLRB(fech, emplead, product, cantPro):
     listaF.append(linea5)
     with open("registroVentas.txt", "a") as regVen:
         regVen.writelines(listaF)
-        
-def genlisRegVen(fechaa, emplead, produc, cantiProdu):
-    if produc == 0:
-        pro = "Disney Cruella De Vil Diamond Funko Pop Exclusivo"
-    elif produc == 1:
-        pro = "Funko Pop Board Games Silver Mr. Monopoly - Figura de vinilo"
-    elif produc == 2:
-        pro = "Funko Pop Daenerys Targaryen 59 Game of Thrones"
-    elif produc == 3:
-        pro = "Funko Pop Flocked Iceman 504 Marvel 80 Years"
-    elif produc == 4:
-        pro = "Funko Pop Glowing Mr Burns 1162 The Simpsons"
-    elif produc == 5:
-        pro = "Funko Pop Grogu Con Galleta 464 Star Wars The Mandalorian"
-    elif produc == 6:
-        pro = "Funko Pop Keychain Pogo The Umbrella Academy"
-    elif produc == 7:
-        pro = "Funko Pop Keychain The Flash DC The Flash"
-    elif produc == 8:
-        pro = "Funko Pop Marvel: Avengers - Wanda Maximoff Exclusivo Disney Collector Zone"
-    elif produc == 9:
-        pro = "Funko Pop Venom 888 Marvel Venom"
-    elif produc == 10:
-        pro = "Llavero Funko Pop Zoey Fortnite"
-    elif produc == 11:
-        pro = "Lucky The Leprechaun Edición Limitada"
-    linea1 = f"{fechaa},{emplead},{pro},{cantiProdu}"
-    with open("listaRegVen.txt", "a") as listaRegVenta:
-         listaRegVenta.write(linea1)
     
- 
 ######################################################################
 #######################"""2222222222222222"""######################### 
 ######################################################################
@@ -318,32 +288,7 @@ def consultAVen(): #Consulta los datos de las ventas
         dataNoBS.append(noBS.split(","))
         
     return dataNoBS
-
-######################################################################
-####################"""555555555555555555555"""#######################
-######################################################################
-
-#def reporteVA():
-    #print("Mostrar reporte de ventas por:  1. Por vendedor 2. Por articulo")
-    #resp = input("respuesta: ")
-    #if resp == 1:
     
-    #elif resp == 2:
-    
-
-#def crearLisRegV(): #Consulta los datos de las ventas
- #   """Crea una lista MEDIO BONITA del archivo registroVentas""" 
-  #  with open("LOTENGOQUECAMBIAR.txt", "r") as regVentas:
-   #     dataString = regVentas.readlines()
-    
-   # dataNoBS = [] 
-    #for person in dataString:
-        #noBS = person.rstrip()
-     #   dataNoBS.append(noBS.split(","))
-        
-   #return dataNoBS
-
-
 ######################################################################
 ###################"""66666666666666666666666666"""###################
 ######################################################################
@@ -395,8 +340,15 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
         elif respu == 2:
             print("\n¡Hasta la proxima!")
             
-    #elif ans == 5:
-        
+    elif ans == 5:
+        print("A continuación puede ver los artículos vendidos por empleado y por artículos\n\n**Si no ve nada a continuacion significa que no hay registro alguno de ventas**\nSi desea hacer el registro de una venta en el n° 1 del menu puede hacerlo")
+        consultVen(consultAVen())
+        print("\n")
+        respu = int(input("¿Desea 1. Regresar al menu 2. Salir ?\nSeleccione el número deseado: "))
+        if respu == 1:
+            menu(listaUCE)
+        elif respu == 2:
+            print("\n¡Hasta la proxima!")
         
     elif ans == 6:
         resp = input("¿Esta seguro que desea salir del programa\n1. Si 2. No?")
