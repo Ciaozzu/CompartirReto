@@ -23,7 +23,7 @@ def regV(): # Esta sección fue hecha por Valería
         
     return finalData
 
-def mostrEmpl(finalData):
+def mostrEmpl(finalData): #Esta sección fue hecha por Valería
     """Esta función muestra los
         empleados que hay"""
     print("A continuación se muestran todos los empleados: ")
@@ -31,7 +31,7 @@ def mostrEmpl(finalData):
         nombre = elemento[0]
         print("- " + nombre)
         
-def mostrEmpl2(finalData):
+def mostrEmpl2(finalData): #Esta sección fue hecha por Ángel
     """Crea una lista unicamente
         con los empleados"""
     listaUE = []
@@ -41,7 +41,7 @@ def mostrEmpl2(finalData):
     return listaUE
 
 
-def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
+def updateEmpleadosLista(name,venta): #Esta sección fue hecha por Valeria
     """Crea la lista nueva con
         nuestras ventas actualizadas"""
     index = 0
@@ -51,7 +51,7 @@ def updateEmpleadosLista(name,venta): # Esta sección fue hecha por Valeria
         index += 1
     return venta
 
-data = regV()
+data = regV() #Esta variable la creamos para facilitar el uso del retorno que da regV()
 listaUCE = mostrEmpl2(data) #variable que utilizamos en menu para hacer el ciclo while del n° 1 posible
 
 def creaLE(venta): #Esta sección fue hecha por Ángel
@@ -77,12 +77,12 @@ def regVE(empleado): # Esta sección fue hecha por Ángel
     resp = 1
     while resp == 1:
         fecha = input("\nFecha en la que se esta realizando el registro de la compra(dd/mm/aa): ")
-        producto = int(input("Introduce el numero del producto vendido: "))
+        producto = int(input("Introduce el número del producto vendido: "))
         cantiProd = int(input("Ingresa la cantidad que fue vendida de este mismo producto: "))
         geneLRB(fecha, empleado, producto, cantiProd)
         listaIM = crearLBI()
         geneAI(crearLIA(actualizarLBI(producto,listaIM,cantiProd)))
-        
+        genlisRegVen(fecha, empleado, producto, cantiProd)
         resp = int(input("Se vendieron más artículos 1. Sí 2. No: "))
         
 def geneLRB(fech, emplead, product, cantPro):
@@ -92,8 +92,32 @@ def geneLRB(fech, emplead, product, cantPro):
     linea1 = "\nRegistro de venta:\n"
     linea2 = f"Fecha de ventas: {fech}\n"
     linea3 = f"Empleado: {emplead}\n"
-    linea4 = f"Producto vendido(s): {product}\n"
-    linea5 = f"Costo: {cantPro}\n"
+    if product == 0:
+        pro = "Disney Cruella De Vil Diamond Funko Pop Exclusivo"
+    elif product == 1:
+        pro = "Funko Pop Board Games Silver Mr. Monopoly - Figura de vinilo"
+    elif product == 2:
+        pro = "Funko Pop Daenerys Targaryen 59 Game of Thrones"
+    elif product == 3:
+        pro = "Funko Pop Flocked Iceman 504 Marvel 80 Years"
+    elif product == 4:
+        pro = "Funko Pop Glowing Mr Burns 1162 The Simpsons"
+    elif product == 5:
+        pro = "Funko Pop Grogu Con Galleta 464 Star Wars The Mandalorian"
+    elif product == 6:
+        pro = "Funko Pop Keychain Pogo The Umbrella Academy"
+    elif product == 7:
+        pro = "Funko Pop Keychain The Flash DC The Flash"
+    elif product == 8:
+        pro = "Funko Pop Marvel: Avengers - Wanda Maximoff Exclusivo Disney Collector Zone"
+    elif product == 9:
+        pro = "Funko Pop Venom 888 Marvel Venom"
+    elif product == 10:
+        pro = "Llavero Funko Pop Zoey Fortnite"
+    elif product == 11:
+        pro = "Lucky The Leprechaun Edición Limitada"
+    linea4 = f"Producto vendido(s): {pro}\n"
+    linea5 = f"Cantidad: {cantPro}\n"
     listaF.append(linea1)
     listaF.append(linea2)
     listaF.append(linea3)
@@ -101,10 +125,39 @@ def geneLRB(fech, emplead, product, cantPro):
     listaF.append(linea5)
     with open("registroVentas.txt", "a") as regVen:
         regVen.writelines(listaF)
+        
+def genlisRegVen(fechaa, emplead, produc, cantiProdu):
+    if produc == 0:
+        pro = "Disney Cruella De Vil Diamond Funko Pop Exclusivo"
+    elif produc == 1:
+        pro = "Funko Pop Board Games Silver Mr. Monopoly - Figura de vinilo"
+    elif produc == 2:
+        pro = "Funko Pop Daenerys Targaryen 59 Game of Thrones"
+    elif produc == 3:
+        pro = "Funko Pop Flocked Iceman 504 Marvel 80 Years"
+    elif produc == 4:
+        pro = "Funko Pop Glowing Mr Burns 1162 The Simpsons"
+    elif produc == 5:
+        pro = "Funko Pop Grogu Con Galleta 464 Star Wars The Mandalorian"
+    elif produc == 6:
+        pro = "Funko Pop Keychain Pogo The Umbrella Academy"
+    elif produc == 7:
+        pro = "Funko Pop Keychain The Flash DC The Flash"
+    elif produc == 8:
+        pro = "Funko Pop Marvel: Avengers - Wanda Maximoff Exclusivo Disney Collector Zone"
+    elif produc == 9:
+        pro = "Funko Pop Venom 888 Marvel Venom"
+    elif produc == 10:
+        pro = "Llavero Funko Pop Zoey Fortnite"
+    elif produc == 11:
+        pro = "Lucky The Leprechaun Edición Limitada"
+    linea1 = f"{fechaa},{emplead},{pro},{cantiProdu}"
+    with open("listaRegVen.txt", "a") as listaRegVenta:
+         listaRegVenta.write(linea1)
     
  
 ######################################################################
-#######################"""2222222222222222"""#########################
+#######################"""2222222222222222"""######################### 
 ######################################################################
 
 def regLA(): # Esta sección fue hecha por Ángel
@@ -114,7 +167,7 @@ def regLA(): # Esta sección fue hecha por Ángel
     resp = 1
     while resp == 1:
         fecha = input("Fecha de llegada del articulo(dd/mm/aa): ")
-        producto = int(input("Introduce el numero del producto reabastecido: "))
+        producto = int(input("Introduce el número del producto reabastecido: "))
         cantiProd = int(input("Ingresa la cantidad que fue reabastecida: "))        
         geneRegLleg(fecha, producto, cantiProd)
         listaaIM = crearLBI()
@@ -128,16 +181,38 @@ def geneRegLleg(fech, product, cantProd):
     listaF = []
     linea1 = "Registro de llegada de articulo:\n"
     linea2 = f"Fecha de recepecion: {fech}\n"
-    linea3 = f"Nombre del articulo: {product}\n"
+    if product == 0:
+        pro = "Disney Cruella De Vil Diamond Funko Pop Exclusivo"
+    elif product == 1:
+        pro = "Funko Pop Board Games Silver Mr. Monopoly - Figura de vinilo"
+    elif product == 2:
+        pro = "Funko Pop Daenerys Targaryen 59 Game of Thrones"
+    elif product == 3:
+        pro = "Funko Pop Flocked Iceman 504 Marvel 80 Years"
+    elif product == 4:
+        pro = "Funko Pop Glowing Mr Burns 1162 The Simpsons"
+    elif product == 5:
+        pro = "Funko Pop Grogu Con Galleta 464 Star Wars The Mandalorian"
+    elif product == 6:
+        pro = "Funko Pop Keychain Pogo The Umbrella Academy"
+    elif product == 7:
+        pro = "Funko Pop Keychain The Flash DC The Flash"
+    elif product == 8:
+        pro = "Funko Pop Marvel: Avengers - Wanda Maximoff Exclusivo Disney Collector Zone"
+    elif product == 9:
+        pro = "Funko Pop Venom 888 Marvel Venom"
+    elif product == 10:
+        pro = "Llavero Funko Pop Zoey Fortnite"
+    elif product == 11:
+        pro = "Lucky The Leprechaun Edición Limitada"
+    linea3 = f"Nombre del articulo: {pro}\n"
     linea4 = f"Cantidad: {cantProd}\n"
-    
     listaF.append(linea1)
     listaF.append(linea2)
     listaF.append(linea3)
     listaF.append(linea4)
     with open("registroLA.txt","a") as regProdAlmacen:
         regProdAlmacen.writelines(listaF)
-     
     
     
 ######################################################################
@@ -249,27 +324,32 @@ def consultAVen(): #Consulta los datos de las ventas
 ######################################################################
 
 #def reporteVA():
- #   print("Mostrar reporte de ventas por:  1. Por vendedor 2. Por articulo")
-  #  resp = input("respuesta: ")
-   # if resp == 1
+    #print("Mostrar reporte de ventas por:  1. Por vendedor 2. Por articulo")
+    #resp = input("respuesta: ")
+    #if resp == 1:
+    
+    #elif resp == 2:
+    
+
+#def crearLisRegV(): #Consulta los datos de las ventas
+ #   """Crea una lista MEDIO BONITA del archivo registroVentas""" 
+  #  with open("LOTENGOQUECAMBIAR.txt", "r") as regVentas:
+   #     dataString = regVentas.readlines()
+    
+   # dataNoBS = [] 
+    #for person in dataString:
+        #noBS = person.rstrip()
+     #   dataNoBS.append(noBS.split(","))
         
-    #elif resp == 2
-     #   Articulo
-
+   # return dataNoBS
 
 
 ######################################################################
-####################"""66666666666666666666666"""#####################
-######################################################################
-
-#def prodPA(): #Te despliega los productos que estan por agotarse
-
-######################################################################
-###################"""77777777777777777777777777###################
+###################"""77777777777777777777777777"""###################
 ######################################################################
         
 def menu(nomError): #Esta sección fue hecha por Ángel Márquez
-    print("\nMenu:\n1. Registrar ventas\n2. Registrar llegada de artículos al almacen\n3. Consultar datos del inventario\n4. Consultar datos de las ventas\n5. Mostrar reportes de ventas por vendedor o por artículo\n6.\n7. Salir\n")
+    print("\nMenu:\n1. Registrar ventas\n2. Registrar llegada de artículos al almacen\n3. Consultar datos del inventario\n4. Consultar datos de las ventas\n5. Mostrar reportes de ventas por vendedor o por artículo\n6. Salir\n")
     ans = int(input("Elige la opción que deseas seleccionar: "))
     if ans == 1:
         print("\nA continuación se le mostrara una lista de las personas empleadas:\n")
@@ -280,7 +360,7 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
         geneA("EmpleadosVentas",creaLE(updateEmpleadosLista(nombr,data)))
         regVE(nombr)
         print("\nEl registro fue hecho con exito")
-        respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el número deseado: "))
+        respu = int(input("\n¿Desea 1. Regresar al menu 2. Salir ?\nSeleccione el número deseado: "))
         if respu == 1:
             menu(listaUCE)
         elif respu == 2:
@@ -290,7 +370,7 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
         print("Llegada de artículos al almacen: ")
         regLA()
         print("\nEl registro fue hecho con exito")
-        respu = int(input("\n¿Desea 1. Permanecer en el programa 2. Salir ?\nSeleccione el numero deseado: "))
+        respu = int(input("\n¿Desea 1. Regresar al menu 2. Salir ?\nSeleccione el número deseado: "))
         if respu == 1:
             menu(listaUCE)
         elif respu == 2:
@@ -298,17 +378,27 @@ def menu(nomError): #Esta sección fue hecha por Ángel Márquez
               
     elif ans == 3:
         print("Datos del inventario")
+        print("Leer la lista desplegada en este orden: Nombre\tCosto(MXN)\tCantidad\tCategoría")
         consultI(creaLI("Inventario"))
-        
+        respu = int(input("\n¿Desea 1. Regresar al menu 2. Salir ?\nSeleccione el número deseado: "))
+        if respu == 1:
+            menu(listaUCE)
+        elif respu == 2:
+            print("\n¡Hasta la proxima!")
     elif ans == 4:
         print("Registro de ventas\n\n**Si no ve nada a continuacion significa que no hay registro alguno de ventas**\nSi desea hacer el registro de una venta en el n° 1 del menu puede hacerlo")
         consultVen(consultAVen())
+        print("\n")
+        respu = int(input("¿Desea 1. Regresar al menu 2. Salir ?\nSeleccione el número deseado: "))
+        if respu == 1:
+            menu(listaUCE)
+        elif respu == 2:
+            print("\n¡Hasta la proxima!")
+            
     #elif ans == 5:
         
         
-    #elif ans == 6
-        
-    elif ans == 7:
+    elif ans == 6:
         resp = input("¿Esta seguro que desea salir del programa\n1. Si 2. No?")
         if resp == 1:
             print("\n¡Hasta la proxima!")
